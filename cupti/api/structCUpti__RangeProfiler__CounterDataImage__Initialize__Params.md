@@ -1,0 +1,22 @@
+# 7.176. CUpti_RangeProfiler_CounterDataImage_Initialize_Params
+
+
+struct CUpti_RangeProfiler_CounterDataImage_Initialize_Params
+Params for cuptiRangeProfilerCounterDataImageInitialize.
+
+Public Members
+
+size_t structSize
+[in] Size of the data structure.
+
+void *pPriv
+[in] Set to NULL.
+
+CUpti_RangeProfiler_Object *pRangeProfilerObject
+[in] Periodic sampler object.
+
+size_t counterDataSize
+[in] Size of the counter data image.
+
+uint8_t *pCounterData
+[in] Counter data image.

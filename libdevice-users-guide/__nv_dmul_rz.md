@@ -1,0 +1,40 @@
+# libdevice User's Guide
+
+Prototype:
+
+
+```
+double @__nv_dmul_rz(double %x, double %y)
+```
+
+
+Description:
+
+
+Multiplies two floating point values x and y in round-towards-zero mode.
+
+
+
+
+Returns:
+
+
+Returns x * y.
+
+   Note:
+For accuracy information see the CUDA C++ Programming Guide, Mathematical Functions Appendix, Double-Precision Floating-Point Functions section.
+
+
+This operation will never be merged into a single multiply-add instruction.
+
+
+Library Availability:
+
+
+Compute 2.0: Yes
+
+
+Compute 3.0: Yes
+
+
+Compute 3.5: Yes

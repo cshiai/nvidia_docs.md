@@ -1,0 +1,21 @@
+# Contents
+
+
+ - [1. Introduction](index.html)
+ - [2. Getting Started](index.html#getting-started)
+ - [2.1. Installation](index.html#installation)
+ - [2.2. Command-line Options](index.html#command-line-options)
+ - [2.2.1. `--trace-file-path` (`-path`)](index.html#trace-file-path-path)
+ - [2.2.2. `--thread-number` (`-thread`)](index.html#thread-number-thread)
+ - [2.2.3. `--breakdown-advisor-entries` (`-breakdown-advisor-entries`)](index.html#breakdown-advisor-entries-breakdown-advisor-entries)
+ - [2.2.4. `--header-advisor-entries` (`-header-advisor-entries`)](index.html#header-advisor-entries-header-advisor-entries)
+ - [2.2.5. `--template-advisor-entries` (`-template-advisor-entries`)](index.html#template-advisor-entries-template-advisor-entries)
+ - [2.2.6. `--max-hash-table-size` (`-size`)](index.html#max-hash-table-size-size)
+ - [2.2.7. `--verbose` (`-v`)](index.html#verbose-v)
+ - [2.2.8. `--version` (`-V`)](index.html#version-v)
+ - [2.2.9. `--options-file` (`-optf`)](index.html#options-file-optf)
+ - [2.3. Usage](index.html#usage)
+ - [3. Notices](index.html#notices)
+ - [3.1. Notice](index.html#notice)
+ - [3.2. OpenCL](index.html#opencl)
+ - [3.3. Trademarks](index.html#trademarks)

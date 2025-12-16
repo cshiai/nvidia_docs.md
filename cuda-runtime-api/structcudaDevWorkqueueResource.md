@@ -1,0 +1,25 @@
+# CUDA Runtime API
+
+[< Previous](structcudaDevWorkqueueConfigResource.html) | [Next >](structcudaEglFrame.html)  CUDA Runtime API ([PDF](https://docs.nvidia.com/cuda/pdf/CUDA_Runtime_API.pdf)) - v13.1.0 ([older](https://developer.nvidia.com/cuda-toolkit-archive)) - Last updated December 4, 2025 - [Send Feedback](mailto:CUDAIssues@nvidia.com?subject=CUDA%20Toolkit%20Documentation%20Feedback:%20CUDA%20Runtime%20API)
+## 7.14. cudaDevWorkqueueResource Struct Reference
+
+
+## [[Data types used by CUDA Runtime](group__CUDART__TYPES.html)]
+
+
+Handle to a pre-existing workqueue related resource
+
+
+### Public Variables
+
+
+unsigned char  reserved[RESOURCE_ABI_BYTES]
+
+### Variables
+
+
+unsigned char  cudaDevWorkqueueResource::reserved[RESOURCE_ABI_BYTES] [inherited]
+Reserved for future use
+
+
+---

@@ -1,0 +1,181 @@
+# 7.52. CUpti_ActivityKernel9
+
+
+struct CUpti_ActivityKernel9
+The activity record for kernel.
+This activity record represents a kernel execution (CUPTI_ACTIVITY_KIND_KERNEL and CUPTI_ACTIVITY_KIND_CONCURRENT_KERNEL)
+
+Public Members
+
+CUpti_ActivityKind kind
+The activity record kind, must be CUPTI_ACTIVITY_KIND_KERNEL or CUPTI_ACTIVITY_KIND_CONCURRENT_KERNEL.
+
+uint8_t requested
+The cache configuration requested by the kernel.
+The value is one of the CUfunc_cache enumeration values from cuda.h.
+
+uint8_t executed
+The cache configuration used for the kernel.
+The value is one of the CUfunc_cache enumeration values from cuda.h.
+
+union CUpti_ActivityKernel9::[anonymous] cacheConfig
+For devices with compute capability 7.5+ cacheConfig values are not updated in case field isSharedMemoryCarveoutRequested is set.
+
+uint8_t sharedMemoryConfig
+The shared memory configuration used for the kernel.
+The value is one of the CUsharedconfig enumeration values from cuda.h.
+
+uint16_t registersPerThread
+The number of registers required for each thread executing the kernel.
+
+CUpti_ActivityPartitionedGlobalCacheConfig partitionedGlobalCacheRequested
+The partitioned global caching requested for the kernel.
+Partitioned global caching is required to enable caching on certain chips, such as devices with compute capability 5.2.
+
+CUpti_ActivityPartitionedGlobalCacheConfig partitionedGlobalCacheExecuted
+The partitioned global caching executed for the kernel.
+Partitioned global caching is required to enable caching on certain chips, such as devices with compute capability 5.2. Partitioned global caching can be automatically disabled if the occupancy requirement of the launch cannot support caching.
+
+uint64_t start
+The start timestamp for the kernel execution, in ns.
+A value of 0 for both the start and end timestamps indicates that timestamp information could not be collected for the kernel.
+
+uint64_t end
+The end timestamp for the kernel execution, in ns.
+A value of 0 for both the start and end timestamps indicates that timestamp information could not be collected for the kernel.
+
+uint64_t completed
+The completed timestamp for the kernel execution, in ns.
+It represents the completion of all it’s child kernels and the kernel itself. A value of CUPTI_TIMESTAMP_UNKNOWN indicates that the completion time is unknown.
+
+uint32_t deviceId
+The ID of the device where the kernel is executing.
+
+uint32_t contextId
+The ID of the context where the kernel is executing.
+
+uint32_t streamId
+The ID of the stream where the kernel is executing.
+
+int32_t gridX
+The X-dimension grid size for the kernel.
+
+int32_t gridY
+The Y-dimension grid size for the kernel.
+
+int32_t gridZ
+The Z-dimension grid size for the kernel.
+
+int32_t blockX
+The X-dimension block size for the kernel.
+
+int32_t blockY
+The Y-dimension block size for the kernel.
+
+int32_t blockZ
+The Z-dimension grid size for the kernel.
+
+int32_t staticSharedMemory
+The static shared memory allocated for the kernel, in bytes.
+
+int32_t dynamicSharedMemory
+The dynamic shared memory reserved for the kernel, in bytes.
+
+uint32_t localMemoryPerThread
+The amount of local memory reserved for each thread, in bytes.
+
+uint32_t localMemoryTotal
+The total amount of local memory reserved for the kernel, in bytes (deprecated in CUDA 11.8).
+Refer field localMemoryTotal_v2
+
+uint32_t correlationId
+The correlation ID of the kernel.
+Each kernel execution is assigned a unique correlation ID that is identical to the correlation ID in the driver or runtime API activity record that launched the kernel.
+
+int64_t gridId
+The grid ID of the kernel.
+Each kernel is assigned a unique grid ID at runtime.
+
+const char *name
+The name of the kernel.
+This name is shared across all activity records representing the same kernel, and so should not be modified.
+
+void *reserved0
+Undefined.
+Reserved for internal use.
+
+uint64_t queued
+The timestamp when the kernel is queued up in the command buffer, in ns.
+A value of CUPTI_TIMESTAMP_UNKNOWN indicates that the queued time could not be collected for the kernel. This timestamp is not collected by default. Use API cuptiActivityEnableLatencyTimestamps() to enable collection.
+Command buffer is a buffer written by CUDA driver to send commands like kernel launch, memory copy etc to the GPU. All launches of CUDA kernels are asynchronous with respect to the host, the host requests the launch by writing commands into the command buffer, then returns without checking the GPU’s progress.
+
+uint64_t submitted
+The timestamp when the command buffer containing the kernel launch is submitted to the GPU, in ns.
+A value of CUPTI_TIMESTAMP_UNKNOWN indicates that the submitted time could not be collected for the kernel. This timestamp is not collected by default. Use API cuptiActivityEnableLatencyTimestamps() to enable collection.
+
+uint8_t launchType
+The indicates if the kernel was executed via a regular launch or via a single/multi device cooperative launch.
+
+See also
+CUpti_ActivityLaunchType
+
+uint8_t isSharedMemoryCarveoutRequested
+This indicates if CU_FUNC_ATTRIBUTE_PREFERRED_SHARED_MEMORY_CARVEOUT was updated for the kernel launch.
+
+uint8_t sharedMemoryCarveoutRequested
+Shared memory carveout value requested for the function in percentage of the total resource.
+The value will be updated only if field isSharedMemoryCarveoutRequested is set.
+
+uint8_t padding
+Undefined.
+Reserved for internal use.
+
+uint32_t sharedMemoryExecuted
+Shared memory size set by the driver.
+
+uint64_t graphNodeId
+The unique ID of the graph node that launched this kernel through graph launch APIs.
+This field will be 0 if the kernel is not launched through graph launch APIs.
+
+CUpti_FuncShmemLimitConfig shmemLimitConfig
+The shared memory limit config for the kernel.
+This field shows whether user has opted for a higher per block limit of dynamic shared memory.
+
+uint32_t graphId
+The unique ID of the graph that launched this kernel through graph launch APIs.
+This field will be 0 if the kernel is not launched through graph launch APIs.
+
+CUaccessPolicyWindow *pAccessPolicyWindow
+The pointer to the access policy window.
+The structure CUaccessPolicyWindow is defined in cuda.h.
+
+uint32_t channelID
+The ID of the HW channel on which the kernel is launched.
+
+CUpti_ChannelType channelType
+The type of the channel.
+
+uint32_t clusterX
+The X-dimension cluster size for the kernel.
+Field is valid for devices with compute capability 9.0 and higher
+
+uint32_t clusterY
+The Y-dimension cluster size for the kernel.
+Field is valid for devices with compute capability 9.0 and higher
+
+uint32_t clusterZ
+The Z-dimension cluster size for the kernel.
+Field is valid for devices with compute capability 9.0 and higher
+
+uint32_t clusterSchedulingPolicy
+The cluster scheduling policy for the kernel.
+Refer CUclusterSchedulingPolicy Field is valid for devices with compute capability 9.0 and higher
+
+uint64_t localMemoryTotal_v2
+The total amount of local memory reserved for the kernel, in bytes.
+
+uint32_t maxPotentialClusterSize
+The maximum cluster size for the kernel.
+
+uint32_t maxActiveClusters
+The maximum clusters that could co-exist on the target device for the kernel.

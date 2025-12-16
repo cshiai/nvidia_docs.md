@@ -1,0 +1,38 @@
+# libdevice User's Guide
+
+Prototype:
+
+
+```
+double @__nv_cosh(double %x)
+```
+
+
+Description:
+
+
+Calculate the hyperbolic cosine of the input argument x.
+
+
+
+
+Returns:
+
+
+ - __nv_cosh(0) returns 1.
+ - __nv_cosh(  ± ∞  ) returns  + ∞  .
+
+    Note:
+For accuracy information see the CUDA C++ Programming Guide, Mathematical Functions Appendix, Double-Precision Floating-Point Functions section.
+
+
+Library Availability:
+
+
+Compute 2.0: Yes
+
+
+Compute 3.0: Yes
+
+
+Compute 3.5: Yes

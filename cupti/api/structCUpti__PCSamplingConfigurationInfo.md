@@ -1,0 +1,41 @@
+# 7.119. CUpti_PCSamplingConfigurationInfo
+
+
+struct CUpti_PCSamplingConfigurationInfo
+PC sampling configuration information structure.
+This structure provides CUpti_PCSamplingConfigurationAttributeType which can be configured or queried for PC sampling configuration
+
+Public Members
+
+CUpti_PCSamplingConfigurationAttributeType attributeType
+Refer CUpti_PCSamplingConfigurationAttributeType for all supported attribute types.
+
+struct CUpti_PCSamplingConfigurationInfo::[anonymous]::[anonymous] invalidData
+Invalid Value.
+
+struct CUpti_PCSamplingConfigurationInfo::[anonymous]::[anonymous] samplingPeriodData
+Refer CUPTI_PC_SAMPLING_CONFIGURATION_ATTR_TYPE_SAMPLING_PERIOD.
+
+struct CUpti_PCSamplingConfigurationInfo::[anonymous]::[anonymous] stallReasonData
+Refer CUPTI_PC_SAMPLING_CONFIGURATION_ATTR_TYPE_STALL_REASON.
+
+struct CUpti_PCSamplingConfigurationInfo::[anonymous]::[anonymous] scratchBufferSizeData
+Refer CUPTI_PC_SAMPLING_CONFIGURATION_ATTR_TYPE_SCRATCH_BUFFER_SIZE.
+
+struct CUpti_PCSamplingConfigurationInfo::[anonymous]::[anonymous] hardwareBufferSizeData
+Refer CUPTI_PC_SAMPLING_CONFIGURATION_ATTR_TYPE_HARDWARE_BUFFER_SIZE.
+
+struct CUpti_PCSamplingConfigurationInfo::[anonymous]::[anonymous] collectionModeData
+Refer CUPTI_PC_SAMPLING_CONFIGURATION_ATTR_TYPE_COLLECTION_MODE.
+
+struct CUpti_PCSamplingConfigurationInfo::[anonymous]::[anonymous] enableStartStopControlData
+Refer CUPTI_PC_SAMPLING_CONFIGURATION_ATTR_TYPE_ENABLE_START_STOP_CONTROL.
+
+struct CUpti_PCSamplingConfigurationInfo::[anonymous]::[anonymous] outputDataFormatData
+Refer CUPTI_PC_SAMPLING_CONFIGURATION_ATTR_TYPE_OUTPUT_DATA_FORMAT.
+
+struct CUpti_PCSamplingConfigurationInfo::[anonymous]::[anonymous] samplingDataBufferData
+Refer CUPTI_PC_SAMPLING_CONFIGURATION_ATTR_TYPE_SAMPLING_DATA_BUFFER.
+
+struct CUpti_PCSamplingConfigurationInfo::[anonymous]::[anonymous] workerThreadPeriodicSleepSpanData
+Refer CUPTI_PC_SAMPLING_CONFIGURATION_ATTR_TYPE_WORKER_THREAD_PERIODIC_SLEEP_SPAN.
