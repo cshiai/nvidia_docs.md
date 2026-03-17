@@ -1,88 +1,67 @@
-# 3. Syntax
+# 3\. Syntax[#](https://docs.nvidia.com/cuda/tile-ir/13.2/sections/syntax.html#syntax "Link to this heading")
 
+**Tile IR** is intended to be constructed using the **Tile IR** MLIR dialect and stored as bytecode.
 
-Tile IR is intended to be constructed using the Tile IR MLIR dialect and stored as bytecode.
+To enable humans to comprehend **Tile IR** bytecode programs, we provide an **unstable** textual representation based on the MLIR dialect. This textual representation has no stability guarantees and it is not intended to be used for writing **Tile IR** programs.
 
+## 3.1. Module[#](https://docs.nvidia.com/cuda/tile-ir/13.2/sections/syntax.html#module "Link to this heading")
 
-To enable humans to comprehend Tile IR bytecode programs, we provide an unstable textual representation based on the MLIR dialect. This textual representation has no stability guarantees and it is not intended to be used for writing Tile IR programs.
+A **Tile IR** program consists of a **Tile IR** module which contains a series of items.
 
+symbol\_name := \`@\` identifier
 
-## 3.1. Module
-
-
-A Tile IR program consists of a Tile IR module which contains a series of items.
-
-
-```
-symbol_name := `@` identifier
-
-cuda_tile.module @symbol_name {
-    <items>*
+cuda\_tile.module @symbol\_name {
+    <items>\*
 }
-```
 
+Copy to clipboard
 
-## 3.2. Items
-
+## 3.2. Items[#](https://docs.nvidia.com/cuda/tile-ir/13.2/sections/syntax.html#items "Link to this heading")
 
 An item is a kernel definition or a global variable definition.
 
+<items\> ::= <kernel\_definition\> | <global\_variable\_definition\>
 
-```
-<items> ::= <kernel_definition> | <global_variable_definition>
-```
+Copy to clipboard
 
-
-## 3.3. Globals
-
+## 3.3. Globals[#](https://docs.nvidia.com/cuda/tile-ir/13.2/sections/syntax.html#globals "Link to this heading")
 
 A global variable definition is a variable that is defined outside of a kernel.
 
+global\_variable\_definition ::= \`global\` <symbol\_name> \`:\` <type> \`=\` <value>
 
-```
-global_variable_definition ::= `global` <symbol_name> `:` <type> `=` <value>
-```
+Copy to clipboard
 
+## 3.4. Kernels[#](https://docs.nvidia.com/cuda/tile-ir/13.2/sections/syntax.html#kernels "Link to this heading")
 
-## 3.4. Kernels
+A kernel definition is a function that is defined inside a **Tile IR** module.
 
+ssa\_name := \`%\` identifier
 
-A kernel definition is a function that is defined inside a Tile IR module.
+function\_signature ::= <function\_parameter>\*
 
+function\_parameter ::= <ssa\_name> \`:\` <type>
 
-```
-ssa_name := `%` identifier
-
-function_signature ::= <function_parameter>*
-
-function_parameter ::= <ssa_name> `:` <type>
-
-<kernel_definition> ::= `func` @kernel_name `(` <function_signature> `)` `->` <function_type> {
-    <kernel_body>
+<kernel\_definition> ::= \`func\` @kernel\_name \`(\` <function\_signature> \`)\` \`->\` <function\_type> {
+    <kernel\_body>
 }
-```
 
+Copy to clipboard
 
 A kernel definition’s body is a sequence of operations.
 
+kernel\_body ::= <operation>\*
 
-```
-kernel_body ::= <operation>*
+operation ::= (ssa\_name \`,\`?)\* \`=\` <operation\_name> <ssa\_name>\* attribute=attribute\_value : type ...
 
-operation ::= (ssa_name `,`?)* `=` <operation_name> <ssa_name>* attribute=attribute_value : type ...
-```
+Copy to clipboard
 
+## 3.5. Types[#](https://docs.nvidia.com/cuda/tile-ir/13.2/sections/syntax.html#types "Link to this heading")
 
-## 3.5. Types
+A type in **Tile IR** is a fixed pre-defined set of types.
 
+element\_type ::= \`f32\` | \`f64\` | \`i8\` | \`i16\` | \`i32\` | \`i64\` | \`b8\` | \`b16\` | \`b32\` | \`b64\`
 
-A type in Tile IR is a fixed pre-defined set of types.
+type ::= \`tile\` \`<\` shape \`x\` element\_type \`>\`
 
-
-```
-element_type ::= `f32` | `f64` | `i8` | `i16` | `i32` | `i64` | `b8` | `b16` | `b32` | `b64`
-
-type ::= `tile` `<` shape `x` element_type `>`
-
-shape ::= `[` integer_literal (`x` integer_literal)* `]`
-```
+shape ::= \`\[\` integer\_literal (\`x\` integer\_literal
