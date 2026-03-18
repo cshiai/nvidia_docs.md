@@ -1,27 +1,19 @@
-# Interoperability
+# Interoperability[#](https://docs.nvidia.com/cuda/cutile-python/interoperability.html#interoperability "Link to this heading")
 
+## Machine Representation[#](https://docs.nvidia.com/cuda/cutile-python/interoperability.html#machine-representation "Link to this heading")
 
-## Machine Representation
-
-
-cuTile executes Python [tile code](execution.html#tile-code) on NVIDIA GPUs by translating the Python code into a *machine representation* that can be executed by CUDA devices. Functions, types, and objects all have a machine representation.
-
+cuTile executes Python [tile code](https://docs.nvidia.com/cuda/cutile-python/execution.html#tile-code) on NVIDIA GPUs by translating the Python code into a _machine representation_ that can be executed by CUDA devices. Functions, types, and objects all have a machine representation.
 
 Machine representations are defined in terms of corresponding CUDA C++ entities. Example: `cuda.tile.float16` has the same machine representation as `__half` in CUDA C++.
 
+## Interoperability with SIMT[#](https://docs.nvidia.com/cuda/cutile-python/interoperability.html#interoperability-with-simt "Link to this heading")
 
-## Interoperability with SIMT
-
-
-### Inter-Kernel
-
+### Inter-Kernel[#](https://docs.nvidia.com/cuda/cutile-python/interoperability.html#inter-kernel "Link to this heading")
 
 Inter-kernel interoperability refers to all interoperability concerns that do not cross the kernel boundary - everything except mixing tile and SIMT code in a kernel. This includes:
 
-
- - Writing tile and SIMT kernels in the same source file.
- - Linking tile and SIMT kernels into the same binary.
- - Passing the same kinds of arrays to both tile and SIMT kernels.
-
+-   Writing tile and SIMT kernels in the same source file.
+-   Linking tile and SIMT kernels into the same binary.
+-   Passing the same kinds of arrays to both tile and SIMT kernels.
 
 Inter-kernel interoperability shall be supported.
